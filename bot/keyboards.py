@@ -25,7 +25,6 @@ main_keyboard = ReplyKeyboardMarkup(
     keyboard=[
         [KeyboardButton(text=MainKeyboardBtnTexts.DIRECTIONS), KeyboardButton(text=MainKeyboardBtnTexts.SIGN_UP)],
         [KeyboardButton(text=MainKeyboardBtnTexts.ABOUT)],
-        [KeyboardButton(text=MainKeyboardBtnTexts.SUPPORT)],
     ]
 )
 

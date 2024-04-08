@@ -192,6 +192,17 @@ class Session(models.Model):
         return text
 
 
+class SessionRecordAsyncManager(AsyncManager):
+    """
+    Менеджер асинхронных запросов в БД для модели Session
+    """
+
+    async def get_with_select_related(self, pk):
+        queryset = self.select_related('user', 'session').get(pk=pk)
+        queryset_list = await sync_to_async(list)(queryset)
+        return queryset_list
+
+
 class SessionRecord(AsyncMixin, models.Model):
     """
     Модель записей на занятия
@@ -209,7 +220,9 @@ class SessionRecord(AsyncMixin, models.Model):
         verbose_name='Занятие',
     )
 
-    objects = AsyncManager()
+    objects = SessionRecordAsyncManager()
+
+    notified = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'Запись на занятие'
@@ -217,6 +230,12 @@ class SessionRecord(AsyncMixin, models.Model):
 
     def __str__(self):
         return f"id: {self.pk} user: {self.user_id} session: {self.session_id}"
+
+    @sync_to_async
+    def get_related(self):
+        session = self.session
+        user = self.user
+        return session, user
 
 
 class Location(models.Model):

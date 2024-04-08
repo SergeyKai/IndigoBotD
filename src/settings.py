@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'bot'
+    'django_apscheduler',
+
+    'bot',
 ]
 
 MIDDLEWARE = [

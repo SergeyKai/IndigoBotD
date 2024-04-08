@@ -1,13 +1,11 @@
-from aiogram import Router, F
+from aiogram import Router
 from aiogram.dispatcher.event.handler import HandlerObject
-from aiogram.filters import Command, CommandStart
-from aiogram.types import Message, FSInputFile, CallbackQuery
+from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.context import FSMContext
 
 from bot.models import User
 from bot.states import SignUpStatesGroup
 from bot.utils.validators import validate_phone_number, normalize_phone_number
-from bot import keyboards as kb
 
 router = Router()
 
