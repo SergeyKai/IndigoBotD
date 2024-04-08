@@ -31,7 +31,8 @@ SECRET_KEY='django_secret_key'
 TOKEN_BOT='example_token'
 ```
 
-SECRET_KEY для Django проекта можно сгенерировать на сайте:  [Документация Django](https://djecrety.ir/)
+SECRET_KEY для Django проекта можно сгенерировать на сайте:  [Djecrety](https://djecrety.ir/)
+
 TOKEN_BOT необходимо получить у [@BotFather](https://t.me/BotFather )
 ## Запуск
 
