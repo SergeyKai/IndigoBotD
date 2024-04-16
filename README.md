@@ -62,5 +62,5 @@ python manage.py run_bot
 
 Запуск планировщика задач: 
 ```
-python manage.py runapscheduler.py
+python manage.py runapscheduler
 ```
