@@ -9,6 +9,18 @@ git clone https://github.com/SergeyKai/IndigoBotD.git
 ```
 
 Перейдите в папку проекта:
+Создайте виртуальное окружение: 
+
+```
+py -m venv venv
+```
+
+активируйте виртуальное окружение:
+
+```
+venv\Scripts\activate
+```
+
 Установите зависимости, используя файл requirements.txt:
 
 ```
@@ -50,5 +62,5 @@ python manage.py run_bot
 
 Запуск планировщика задач: 
 ```
-python manage.py runapscheduler.py
+python manage.py runapscheduler
 ```
