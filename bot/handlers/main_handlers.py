@@ -4,6 +4,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, FSInputFile
 from .. import keyboards as kb
 from ..filters import IsRegistered
+from ..keyboards import our_website_keyboard
 from ..models import Specialist, Location, Contacts
 
 router = Router()
@@ -52,6 +53,6 @@ async def our_contacts(message: Message):
     await message.answer(f'{contacts.phone_number}\n{contacts.email}')
 
 
-# @router.message()
-# async def flood_handler(message: Message):
-#     await message.answer('Извините но я вас не понимаю 🧐')
+@router.message(F.text == kb.MainKeyboardBtnTexts.OUR_WEBSITE)
+async def our_contacts(message: Message):
+    await message.answer(text='<b>PROИндиго</b>', reply_markup=our_website_keyboard)

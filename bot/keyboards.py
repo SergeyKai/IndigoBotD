@@ -101,3 +101,10 @@ async def sign_up_keyboard(pk: int, callback_data_prefix: str = 'sign_up_directi
     )
 
     return builder.as_markup()
+
+
+our_website_keyboard = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text='Наш сайт', url='https://pro-indigo.ru/')]
+    ]
+)
