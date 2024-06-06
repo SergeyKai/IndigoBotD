@@ -16,7 +16,7 @@ async def start_registration(income_data: CallbackQuery | Message,
     if isinstance(income_data, CallbackQuery):
         await income_data.message.answer('Введите ваше имя')
     elif isinstance(income_data, Message):
-        await income_data.answer('Введите ваше имя')
+        await income_data.answer('Здравствуйте, как к вам обращаться')
 
     if handled_obj:
         await state.update_data(handled_obj=handled_obj, handled_date=income_data)

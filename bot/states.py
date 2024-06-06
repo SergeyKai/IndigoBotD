@@ -11,3 +11,7 @@ class SignUpStatesGroup(StatesGroup):
 
     SELECT_DIRECTION = State()
     SELECT_SESSION = State()
+
+    SELECT_DATE = State()
+    SELECT_TIME = State()
+    SELECT_SAVE = State()

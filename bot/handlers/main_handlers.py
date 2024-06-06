@@ -3,12 +3,13 @@ from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, FSInputFile
 from .. import keyboards as kb
+from ..filters import IsRegistered
 from ..models import Specialist, Location, Contacts
 
 router = Router()
 
 
-@router.message(CommandStart())
+@router.message(CommandStart(), IsRegistered())
 @router.message(F.text == kb.MainKeyboardBtnTexts.CANCEL)
 @router.message(F.text == kb.MainKeyboardBtnTexts.MAIN_MENU)
 async def start(message: Message, state: FSMContext):
@@ -49,3 +50,8 @@ async def our_locations(message: Message):
 async def our_contacts(message: Message):
     contacts = await Contacts.objects.aget(pk=1)
     await message.answer(f'{contacts.phone_number}\n{contacts.email}')
+
+
+# @router.message()
+# async def flood_handler(message: Message):
+#     await message.answer('Извините но я вас не понимаю 🧐')

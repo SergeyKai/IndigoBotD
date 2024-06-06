@@ -18,6 +18,7 @@ class MainKeyboardBtnTexts:
     OUR_SPECIALISTS = 'Наши специалисты 🤵'
     OUR_LOCATIONS = 'Наши локации 🌏'
     OUR_CONTACTS = 'Наши контакты 📞'
+    OUR_WEBSITE = 'Наш сайт 🖥'
 
 
 main_keyboard = ReplyKeyboardMarkup(
@@ -41,6 +42,7 @@ about_keyboard = ReplyKeyboardMarkup(
         [KeyboardButton(text=MainKeyboardBtnTexts.OUR_SPECIALISTS)],
         [KeyboardButton(text=MainKeyboardBtnTexts.OUR_LOCATIONS)],
         [KeyboardButton(text=MainKeyboardBtnTexts.OUR_CONTACTS)],
+        [KeyboardButton(text=MainKeyboardBtnTexts.OUR_WEBSITE)],
         [KeyboardButton(text=MainKeyboardBtnTexts.MAIN_MENU)],
     ]
 )

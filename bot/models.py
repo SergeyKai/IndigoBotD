@@ -143,25 +143,27 @@ class SessionAsyncManager(AsyncManager):
         return queryset_list
 
 
-class Session(models.Model):
+class Session(AsyncMixin, models.Model):
     """
     Модель занятий
     """
-    title = models.CharField(max_length=300, verbose_name='Заголовок')
+    title = models.CharField(max_length=300, verbose_name='Заголовок', null=True, blank=True, )
     direction = models.ForeignKey(
         Direction,
         related_name="sessions",
         on_delete=models.CASCADE,
-        verbose_name='Направление'
+        verbose_name='Направление',
     )
-    date = models.DateField(null=True, verbose_name='Дата')
-    time = models.TimeField(null=True, verbose_name='Время')
+    date = models.DateField(null=True, verbose_name='Дата', )
+    time = models.TimeField(null=True, verbose_name='Время', )
 
     specialist = models.ForeignKey(
         Specialist,
         related_name="sessions",
         on_delete=models.CASCADE,
-        verbose_name='Специалист'
+        verbose_name='Специалист',
+        null=True,
+        blank=True,
     )
 
     objects = SessionAsyncManager()
@@ -185,9 +187,12 @@ class Session(models.Model):
     async def message_text(self):
         await self.get_direction()
         await self.get_specialist()
+
+        _specialist = f'Специалист: {self.specialist.first_name} {self.specialist.last_name}\n'
+
         text = (f'Занятие: {self.title}\n'
                 f'Направление: {self.direction.title}\n'
-                f'Специалист: {self.specialist.first_name} {self.specialist.last_name}\n'
+                f'{_specialist if _specialist is not None else ""}'
                 f'Дата: {self.date} Время: {self.time}')
         return text
 
