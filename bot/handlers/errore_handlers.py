@@ -8,4 +8,5 @@ router = Router()
 @router.message()
 async def non_existent_commands_handler(message: Message):
     """ обработчик несуществующих команд """
-    await message.answer('Я тебя не понимаю ☹')
+    if message.text != '/start':
+        await message.answer('Я вас не понимаю ☹')

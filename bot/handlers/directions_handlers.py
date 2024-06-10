@@ -72,7 +72,7 @@ async def sig_up_choose_direction(callback: CallbackQuery, state: FSMContext):
     now_date = datetime.now().date().strftime("%d.%m.%Y")
 
     await callback.message.answer(
-        f'Выберите удобную для вас дату в формате \"д.м.г ({now_date})\" ☺',
+        f'Выберите удобную для вас дату в формате "д.м.г ({now_date})" ☺',
         reply_markup=kb.cancel_keyboard)
 
     await state.set_state(SignUpStatesGroup.SELECT_DATE)
@@ -88,7 +88,7 @@ async def sig_up_direction_choose_date(message: Message, state: FSMContext):
             await state.set_state(SignUpStatesGroup.SELECT_TIME)
             await message.answer('Отлично!\n Введите пожалуйста время в формате "00:00"')
         else:
-            await message.answer('Дата находится в закрытом периоде ☹\nПожалуйста выберите дургую дату')
+            await message.answer('Дата находится в закрытом периоде ☹\nПожалуйста, выберите другую дату')
     else:
         await message.answer('Не верный формат даты ☹\nПопробуйте снова')
 

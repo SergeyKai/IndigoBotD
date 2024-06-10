@@ -109,8 +109,8 @@ class Specialist(models.Model):
     objects = AsyncManager()
 
     class Meta:
-        verbose_name = 'Саециалист'
-        verbose_name_plural = 'Саециалисты'
+        verbose_name = 'Специалист'
+        verbose_name_plural = 'Специалисты'
 
     def __str__(self):
         return f"id: {self.pk} first_name: {self.first_name} last_name: {self.last_name}"
